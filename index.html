@@ -1448,7 +1448,7 @@
   </style>
 </head>
 
-<body class="">
+<body class="is-playing">
 
   <!-- Lớp phủ hạt phim Vintage Film Grain Noise Overlay -->
   <div class="film-grain"></div>
@@ -1478,7 +1478,7 @@
         <!-- Bộ đếm Ngày và Giờ thời gian thực chính xác -->
         <div class="live-clock-badge" id="liveClockBadge" title="Thời gian thực">
           <i class="fa-regular fa-clock"></i>
-          <span class="live-clock-time" id="liveClockTime">21:32:27</span>
+          <span class="live-clock-time" id="liveClockTime">21:35:27</span>
           <span class="live-clock-sep">•</span>
           <i class="fa-regular fa-calendar-days"></i>
           <span class="live-clock-date" id="liveClockDate">Thứ Sáu, 23/10/2026</span>
@@ -1487,7 +1487,7 @@
         <!-- Thống kê số lượt xem trang (Views Counter) -->
         <div class="views-counter-badge" id="viewsCounterBadge" title="Tổng số lượt xem trang">
           <i class="fa-solid fa-eye"></i>
-          <span class="views-count" id="viewsCount">1.299</span>
+          <span class="views-count" id="viewsCount">1.300</span>
           <span class="views-label">lượt xem</span>
         </div>
       </div>
@@ -1543,13 +1543,13 @@
         <div class="lofi-badge">
           <span class="rec-dot"></span> LO-FI CHILL • 24/7 STEREO
         </div>
-        <div class="vhs-clock" id="vhsClock">PAUSED • CHILL</div>
+        <div class="vhs-clock" id="vhsClock">TAPE A • 0:58</div>
       </div>
 
       <!-- Info bài đang phát -->
       <div class="now-playing">
         <div class="song-art-container">
-          <img src="https://img.youtube.com/vi/LZN4I3K8SC0/hqdefault.jpg" alt="Album Art" id="coverArt" class="song-art">
+          <img src="https://img.youtube.com/vi/LZN4I3K8SC0/hqdefault.jpg" alt="Album Art" id="coverArt" class="song-art playing">
           <!-- Cần kim đĩa than cổ điển tự động hạ xuống khi phát nhạc -->
           <svg class="tonearm" viewBox="0 0 30 42" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="22" cy="6" r="4.5" fill="#1b1e2c" stroke="#00f2fe" stroke-width="1.2"></circle>
@@ -1561,7 +1561,7 @@
         <div class="song-meta">
           <div class="song-title-row">
             <span class="song-title" id="songTitle">Cứ Chill Thôi</span>
-            <div class="sound-wave" id="soundWave">
+            <div class="sound-wave playing" id="soundWave">
               <span></span><span></span><span></span><span></span>
             </div>
           </div>
@@ -1572,10 +1572,10 @@
       <!-- Timeline & Progress -->
       <div class="progress-box">
         <div class="progress-bar-container" id="progressContainer">
-          <div class="progress-bar" id="progressBar" style="width: 10.939%;"></div>
+          <div class="progress-bar" id="progressBar" style="width: 20.7912%;"></div>
         </div>
         <div class="time-info">
-          <span id="currentTime">0:30</span>
+          <span id="currentTime">0:58</span>
           <span id="duration">4:40</span>
         </div>
       </div>
@@ -1586,7 +1586,7 @@
           <i class="fa-solid fa-backward-step"></i>
         </button>
         <button class="ctrl-btn play-btn" id="playBtn" title="Phát/Tạm dừng">
-          <i class="fa-solid fa-play" id="playIcon"></i>
+          <i class="fa-solid fa-pause" id="playIcon"></i>
         </button>
         <button class="ctrl-btn" id="nextBtn" title="Bài kế tiếp">
           <i class="fa-solid fa-forward-step"></i>

@@ -1224,6 +1224,41 @@
       font-size: 0.82rem;
     }
 
+    .deploy-file-input {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px dashed rgba(0, 242, 254, 0.35);
+      border-radius: 14px;
+      padding: 8px 12px;
+      font-size: 0.82rem;
+      color: var(--text-main);
+      outline: none;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .deploy-file-input:hover {
+      border-color: var(--neon-cyan);
+      background: rgba(0, 242, 254, 0.06);
+    }
+
+    .deploy-file-input::file-selector-button {
+      background: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
+      color: #0b0e1b;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.78rem;
+      cursor: pointer;
+      margin-right: 10px;
+      transition: all 0.2s ease;
+    }
+
+    .deploy-file-input::file-selector-button:hover {
+      box-shadow: 0 0 10px rgba(0, 242, 254, 0.5);
+    }
+
     .token-toggle-btn {
       position: absolute;
       right: 12px;
@@ -1413,7 +1448,7 @@
   </style>
 </head>
 
-<body class="is-playing">
+<body class="">
 
   <!-- Lớp phủ hạt phim Vintage Film Grain Noise Overlay -->
   <div class="film-grain"></div>
@@ -1435,7 +1470,7 @@
       <div class="avatar-wrapper">
         <img src="https://i.pinimg.com/736x/cd/e0/07/cde007ef3850b5959be6d9af9ad4edb0.jpg" alt="Avatar" class="avatar-img">
       </div>
-      <h1 class="name" id="profileDisplayName">Trần Vĩnh Cường</h1>
+      <h1 class="name" id="profileDisplayName">Hisoka</h1>
       <p class="bio"></p>
       
       <!-- Hàng thống kê: Ngày Giờ & Số lượt xem (Live Views Counter) -->
@@ -1443,7 +1478,7 @@
         <!-- Bộ đếm Ngày và Giờ thời gian thực chính xác -->
         <div class="live-clock-badge" id="liveClockBadge" title="Thời gian thực">
           <i class="fa-regular fa-clock"></i>
-          <span class="live-clock-time" id="liveClockTime">20:12:18</span>
+          <span class="live-clock-time" id="liveClockTime">21:30:27</span>
           <span class="live-clock-sep">•</span>
           <i class="fa-regular fa-calendar-days"></i>
           <span class="live-clock-date" id="liveClockDate">Thứ Sáu, 23/10/2026</span>
@@ -1452,7 +1487,7 @@
         <!-- Thống kê số lượt xem trang (Views Counter) -->
         <div class="views-counter-badge" id="viewsCounterBadge" title="Tổng số lượt xem trang">
           <i class="fa-solid fa-eye"></i>
-          <span class="views-count" id="viewsCount">1.298</span>
+          <span class="views-count" id="viewsCount">1.299</span>
           <span class="views-label">lượt xem</span>
         </div>
       </div>
@@ -1508,13 +1543,13 @@
         <div class="lofi-badge">
           <span class="rec-dot"></span> LO-FI CHILL • 24/7 STEREO
         </div>
-        <div class="vhs-clock" id="vhsClock">TAPE A • 0:26</div>
+        <div class="vhs-clock" id="vhsClock">PAUSED • CHILL</div>
       </div>
 
       <!-- Info bài đang phát -->
       <div class="now-playing">
         <div class="song-art-container">
-          <img src="https://img.youtube.com/vi/LZN4I3K8SC0/hqdefault.jpg" alt="Album Art" id="coverArt" class="song-art playing">
+          <img src="https://img.youtube.com/vi/LZN4I3K8SC0/hqdefault.jpg" alt="Album Art" id="coverArt" class="song-art">
           <!-- Cần kim đĩa than cổ điển tự động hạ xuống khi phát nhạc -->
           <svg class="tonearm" viewBox="0 0 30 42" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="22" cy="6" r="4.5" fill="#1b1e2c" stroke="#00f2fe" stroke-width="1.2"></circle>
@@ -1526,7 +1561,7 @@
         <div class="song-meta">
           <div class="song-title-row">
             <span class="song-title" id="songTitle">Cứ Chill Thôi</span>
-            <div class="sound-wave playing" id="soundWave">
+            <div class="sound-wave" id="soundWave">
               <span></span><span></span><span></span><span></span>
             </div>
           </div>
@@ -1537,10 +1572,10 @@
       <!-- Timeline & Progress -->
       <div class="progress-box">
         <div class="progress-bar-container" id="progressContainer">
-          <div class="progress-bar" id="progressBar" style="width: 9.5725%;"></div>
+          <div class="progress-bar" id="progressBar" style="width: 10.939%;"></div>
         </div>
         <div class="time-info">
-          <span id="currentTime">0:26</span>
+          <span id="currentTime">0:30</span>
           <span id="duration">4:40</span>
         </div>
       </div>
@@ -1551,7 +1586,7 @@
           <i class="fa-solid fa-backward-step"></i>
         </button>
         <button class="ctrl-btn play-btn" id="playBtn" title="Phát/Tạm dừng">
-          <i class="fa-solid fa-pause" id="playIcon"></i>
+          <i class="fa-solid fa-play" id="playIcon"></i>
         </button>
         <button class="ctrl-btn" id="nextBtn" title="Bài kế tiếp">
           <i class="fa-solid fa-forward-step"></i>
@@ -1604,89 +1639,7 @@
     </section>
 
     <!-- 4. BẢNG ĐIỀU KHIỂN CẤU HÌNH & TỰ ĐỘNG DEPLOY LÊN GITHUB -->
-    <section class="deploy-card">
-      <div class="deploy-header">
-        <div class="deploy-title">
-          <i class="fa-solid fa-cloud-arrow-up"></i> Cấu hình &amp; Tự động Deploy
-        </div>
-        <div class="deploy-badge">GitHub Pages</div>
-      </div>
-
-      <div class="deploy-form">
-        <!-- Ô nhập Tên của tôi -->
-        <div class="input-group">
-          <label class="input-label" for="customNameInput">
-            <i class="fa-solid fa-user-pen"></i> Tên của tôi (Hiển thị trang trọng trên trang)
-          </label>
-          <div class="input-box-wrapper">
-            <input type="text" id="customNameInput" class="deploy-input" placeholder="Nhập tên của bạn..." value="Trần Vĩnh Cường">
-          </div>
-          <span class="input-hint">Tên sẽ tự động đồng bộ ngay lập tức lên tiêu đề cá nhân phía trên.</span>
-        </div>
-
-        <!-- Ô cấu hình Link Telegram Cá Nhân -->
-        <div class="input-group">
-          <label class="input-label" for="telePersonalUrlInput">
-            <i class="fa-brands fa-telegram"></i> Đường dẫn Telegram Cá Nhân
-          </label>
-          <div class="input-box-wrapper">
-            <input type="text" id="telePersonalUrlInput" class="deploy-input" placeholder="https://t.me/h1soka_w" value="https://t.me/h1soka_w">
-          </div>
-          <span class="input-hint">Đồng bộ trực tiếp vào nút Telegram ở thanh liên kết phía trên.</span>
-        </div>
-
-        <!-- Ô cấu hình Link Bot Bán Hàng Telegram -->
-        <div class="input-group">
-          <label class="input-label" for="teleBotUrlInput">
-            <i class="fa-solid fa-robot"></i> Đường dẫn Bot Bán Hàng Telegram
-          </label>
-          <div class="input-box-wrapper">
-            <input type="text" id="teleBotUrlInput" class="deploy-input" placeholder="https://t.me/hisokashop_bot" value="https://t.me/hisokashop_bot">
-          </div>
-          <span class="input-hint">Đồng bộ trực tiếp vào thẻ Banner Bot Bán Hàng trên website.</span>
-        </div>
-
-        <!-- Ô nhập GitHub Personal Access Token -->
-        <div class="input-group">
-          <label class="input-label" for="githubTokenInput">
-            <i class="fa-solid fa-key"></i> GitHub Personal Access Token (PAT)
-          </label>
-          <div class="input-box-wrapper">
-            <input type="password" id="githubTokenInput" class="deploy-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx hoặc github_pat_..." autocomplete="off" value="">
-            <button type="button" class="token-toggle-btn" id="toggleTokenBtn" title="Hiện/Ẩn Token">
-              <i class="fa-solid fa-eye" id="toggleTokenIcon"></i>
-            </button>
-          </div>
-          <span class="input-hint">Cần cấp quyền <code>repo</code> để tạo/cập nhật repository và kích hoạt Pages.</span>
-        </div>
-
-        <!-- Ô nhập Tên Repository -->
-        <div class="input-group">
-          <label class="input-label" for="repoNameInput">
-            <i class="fa-solid fa-folder-bookmark"></i> Tên Repository (Kho lưu trữ)
-          </label>
-          <div class="input-box-wrapper">
-            <input type="text" id="repoNameInput" class="deploy-input" placeholder="Ví dụ: my-bio-link" value="profile-link">
-          </div>
-          <span class="input-hint">Tự động tạo mới Public Repository nếu chưa có trên tài khoản GitHub.</span>
-        </div>
-
-        <!-- Nút bấm Deploy -->
-        <div class="deploy-btn-wrapper">
-          <button type="button" class="deploy-submit-btn" id="deployBtn" disabled=""><i class="fa-solid fa-circle-notch fa-spin"></i> Đang deploy...</button>
-        </div>
-      </div>
-
-      <!-- Khung hiển thị tiến trình và kết quả -->
-      <div class="deploy-status-box loading" id="deployStatusBox">
-        <div id="statusContent">
-          <div style="font-weight: 600; margin-bottom: 6px; display: flex; align-items: center; gap: 7px;">
-            <i class="fa-solid fa-arrows-rotate fa-spin" style="color: var(--neon-cyan);"></i> Tiến trình tự động Deploy:
-          </div>
-          <ul class="status-step-list"><li class="status-step-item done"><i class="fa-solid fa-circle-check"></i> <span>Xác thực tài khoản GitHub...</span></li><li class="status-step-item done"><i class="fa-solid fa-circle-check"></i> <span>Kiểm tra / Khởi tạo Repository "profile-link"...</span></li><li class="status-step-item pending"><i class="fa-solid fa-circle-notch fa-spin"></i> <span>Lấy mã nguồn HTML &amp; mã hóa Base64...</span></li><li class="status-step-item waiting"><i class="fa-regular fa-clock"></i> <span>Đẩy file index.html lên branch main...</span></li><li class="status-step-item waiting"><i class="fa-regular fa-clock"></i> <span>Kích hoạt GitHub Pages (branch main, root)...</span></li></ul>
-        </div>
-      </div>
-    </section>
+    
 
     <div class="footer-text">
       © 2026 Designed with Neon Dark Aesthetics
@@ -2428,6 +2381,18 @@
     const repoNameInput = document.getElementById('repoNameInput');
     const deployStatusBox = document.getElementById('deployStatusBox');
     const statusContent = document.getElementById('statusContent');
+    const musicFilesInput = document.getElementById('musicFilesInput');
+    const musicFilesHint = document.getElementById('musicFilesHint');
+
+    if (musicFilesInput && musicFilesHint) {
+      musicFilesInput.addEventListener('change', () => {
+        const count = musicFilesInput.files.length;
+        if (count > 0) {
+          const names = Array.from(musicFilesInput.files).map(f => f.name).join(', ');
+          musicFilesHint.innerHTML = `<span style="color: #22c55e;"><i class="fa-solid fa-check"></i> Đã chọn ${count} file: ${names}</span>`;
+        }
+      });
+    }
 
     // Chuyển đổi chuỗi UTF-8 sang Base64 an toàn cho mọi ký tự tiếng Việt
     function utf8ToBase64(str) {
@@ -2440,6 +2405,48 @@
       return btoa(binArray.join(''));
     }
 
+    // Đọc file âm thanh thành Base64
+    async function getAudioFileBase64(filename, fileList) {
+      // 1. Kiểm tra trong danh sách file người dùng chọn từ input
+      if (fileList && fileList.length > 0) {
+        for (let i = 0; i < fileList.length; i++) {
+          const f = fileList[i];
+          if (f.name.toLowerCase() === filename.toLowerCase()) {
+            return new Promise((resolve, reject) => {
+              const reader = new FileReader();
+              reader.onload = () => {
+                const b64 = reader.result.split(',')[1];
+                resolve(b64);
+              };
+              reader.onerror = reject;
+              reader.readAsDataURL(f);
+            });
+          }
+        }
+      }
+
+      // 2. Thử fetch trực tiếp tương đối (nếu chạy qua live server hoặc localhost)
+      try {
+        const res = await fetch(filename);
+        if (res.ok) {
+          const blob = await res.blob();
+          return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = () => {
+              const b64 = reader.result.split(',')[1];
+              resolve(b64);
+            };
+            reader.onerror = reject;
+            reader.readAsDataURL(blob);
+          });
+        }
+      } catch (err) {
+        // Bị hạn chế bởi CORS file://
+      }
+
+      return null;
+    }
+
     // Cập nhật trạng thái giao diện Deploy
     function setDeployStatus(type, htmlContent) {
       deployStatusBox.className = `deploy-status-box ${type}`;
@@ -2449,7 +2456,7 @@
     async function handleDeployToGitHub() {
       const token = githubTokenInput.value.trim();
       const rawRepo = repoNameInput.value.trim();
-      const currentName = customNameInput.value.trim() || 'Trần Vĩnh Cường';
+      const currentName = customNameInput.value.trim() || 'Hisoka';
 
       if (!token) {
         setDeployStatus('error', `
@@ -2484,9 +2491,10 @@
       let statusSteps = [
         { id: 1, text: 'Xác thực tài khoản GitHub...', status: 'pending' },
         { id: 2, text: `Kiểm tra / Khởi tạo Repository "${repoName}"...`, status: 'waiting' },
-        { id: 3, text: 'Lấy mã nguồn HTML & mã hóa Base64...', status: 'waiting' },
+        { id: 3, text: 'Chuẩn bị mã nguồn HTML (đã loại bỏ khung Deploy)...', status: 'waiting' },
         { id: 4, text: 'Đẩy file index.html lên branch main...', status: 'waiting' },
-        { id: 5, text: 'Kích hoạt GitHub Pages (branch main, root)...', status: 'waiting' }
+        { id: 5, text: 'Tải 5 file nhạc chill (.webm) lên GitHub...', status: 'waiting' },
+        { id: 6, text: 'Kích hoạt GitHub Pages (branch main, root)...', status: 'waiting' }
       ];
 
       function renderSteps() {
@@ -2573,13 +2581,11 @@
         statusSteps[2].status = 'pending';
         renderSteps();
 
-        // BƯỚC 3: Lấy toàn bộ mã nguồn HTML hiện tại (outerHTML)
-        // Đảm bảo các giá trị đã được đồng bộ vào DOM attributes
+        // BƯỚC 3: Tạo bản sao HTML và XÓA HOÀN TOÀN KHUNG DEPLOY khỏi phiên bản đưa lên GitHub
         customNameInput.setAttribute('value', currentName);
         repoNameInput.setAttribute('value', repoName);
         if (profileDisplayName) profileDisplayName.textContent = currentName;
 
-        // Đồng bộ link Telegram Cá Nhân & Bot Bán Hàng vào attributes
         if (telePersonalUrlInput) {
           const currentPersonalUrl = telePersonalUrlInput.value.trim() || 'https://t.me/h1soka_w';
           telePersonalUrlInput.setAttribute('value', currentPersonalUrl);
@@ -2592,16 +2598,16 @@
           if (teleShopCard) teleShopCard.setAttribute('href', currentBotUrl);
         }
 
-        // Lưu tạm giá trị token rồi xóa trắng khỏi attribute trước khi lấy outerHTML
-        // (Tránh để lộ token cá nhân lên repository công khai trên GitHub)
-        const savedTokenValue = githubTokenInput.value;
-        githubTokenInput.setAttribute('value', '');
+        // Tạo bản sao clone của DOM để xóa khung deploy
+        const cloneDoc = document.documentElement.cloneNode(true);
 
-        const fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+        // Xóa hoàn toàn <section class="deploy-card"> khỏi bản sao đưa lên GitHub
+        const deployCardInClone = cloneDoc.querySelector('.deploy-card');
+        if (deployCardInClone) {
+          deployCardInClone.remove();
+        }
 
-        // Khôi phục token lại trên giao diện sau khi chụp HTML
-        githubTokenInput.value = savedTokenValue;
-
+        const fullHtml = '<!DOCTYPE html>\n' + cloneDoc.outerHTML;
         const base64Content = utf8ToBase64(fullHtml);
 
         statusSteps[2].status = 'done';
@@ -2633,7 +2639,66 @@
         statusSteps[4].status = 'pending';
         renderSteps();
 
-        // BƯỚC 5: Kích hoạt GitHub Pages (Source: branch main, folder /root)
+        // BƯỚC 5: Tải các file nhạc chill (.webm) lên repository
+        const musicList = [
+          'cuchillthoi.webm',
+          'ghequa.webm',
+          'chuyenrang.webm',
+          'may.webm',
+          'nangtho.webm'
+        ];
+
+        const selectedMusicFiles = musicFilesInput ? musicFilesInput.files : null;
+
+        for (let i = 0; i < musicList.length; i++) {
+          const trackName = musicList[i];
+          statusSteps[4].text = `Đang tải lên file nhạc (${i + 1}/${musicList.length}): ${trackName}...`;
+          renderSteps();
+
+          // Lấy dữ liệu base64 của file nhạc
+          const trackBase64 = await getAudioFileBase64(trackName, selectedMusicFiles);
+          if (!trackBase64) {
+            throw new Error(`Chưa nạp được file nhạc "${trackName}". Hãy bấm vào ô "5 File nhạc chill tải lên GitHub" ở trên, chọn đủ 5 file .webm trong thư mục máy của bạn rồi bấm Deploy lại nhé!`);
+          }
+
+          // Kiểm tra SHA cũ nếu file đã tồn tại trên repo
+          let existingTrackSha = null;
+          try {
+            const checkTrackRes = await fetch(`https://api.github.com/repos/${username}/${repoName}/contents/${trackName}?ref=${defaultBranch}`, { headers });
+            if (checkTrackRes.ok) {
+              const checkData = await checkTrackRes.json();
+              existingTrackSha = checkData.sha;
+            }
+          } catch (e) { }
+
+          // Đẩy file nhạc lên GitHub
+          const putTrackBody = {
+            message: `Upload chill audio track: ${trackName}`,
+            content: trackBase64,
+            branch: defaultBranch
+          };
+          if (existingTrackSha) {
+            putTrackBody.sha = existingTrackSha;
+          }
+
+          const putTrackRes = await fetch(`https://api.github.com/repos/${username}/${repoName}/contents/${trackName}`, {
+            method: 'PUT',
+            headers,
+            body: JSON.stringify(putTrackBody)
+          });
+
+          if (!putTrackRes.ok) {
+            const trackErr = await putTrackRes.json();
+            throw new Error(`Lỗi khi đẩy file nhạc "${trackName}": ${trackErr.message || putTrackRes.statusText}`);
+          }
+        }
+
+        statusSteps[4].text = 'Đã tải lên đủ 5 file nhạc chill lên GitHub!';
+        statusSteps[4].status = 'done';
+        statusSteps[5].status = 'pending';
+        renderSteps();
+
+        // BƯỚC 6: Kích hoạt GitHub Pages (Source: branch main, folder /root)
         try {
           const pagesRes = await fetch(`https://api.github.com/repos/${username}/${repoName}/pages`, {
             method: 'POST',
@@ -2654,10 +2719,16 @@
           console.warn('Lỗi kích hoạt Pages:', pageErr);
         }
 
-        statusSteps[4].status = 'done';
+        statusSteps[5].status = 'done';
         renderSteps();
 
-        // BƯỚC 6: Xuất kết quả link website dạng https://<username>.github.io/<repo-name>/
+        // Ẩn form cấu hình bên dưới sau khi deploy thành công
+        const deployForm = document.querySelector('.deploy-form');
+        if (deployForm) {
+          deployForm.style.display = 'none';
+        }
+
+        // BƯỚC 7: Xuất kết quả link website dạng https://<username>.github.io/<repo-name>/
         const websiteUrl = `https://${username.toLowerCase()}.github.io/${repoName}/`;
 
         setDeployStatus('success', `
@@ -2665,7 +2736,7 @@
             <i class="fa-solid fa-circle-check" style="color: #22c55e;"></i> Deploy thành công lên GitHub Pages!
           </div>
           <div style="font-size: 0.78rem; opacity: 0.9; margin-bottom: 8px;">
-            Mã nguồn đã được push lên kho lưu trữ <strong>${username}/${repoName}</strong>.
+            Mã nguồn đã được push lên kho lưu trữ <strong>${username}/${repoName}</strong> (đã tải đủ 5 file nhạc chill và loại bỏ khung deploy khỏi trang web công khai).
           </div>
           <div class="success-link-card">
             <div class="success-link-text"><i class="fa-solid fa-link"></i> Đường dẫn trang web của bạn:</div>
@@ -2679,10 +2750,13 @@
               <a href="${websiteUrl}" target="_blank" rel="noopener noreferrer" class="action-btn">
                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Mở trang web
               </a>
+              <button type="button" class="action-btn" id="hideDeployCardBtn" style="border-color: rgba(255,42,133,0.4); color: var(--neon-pink);">
+                <i class="fa-solid fa-eye-slash"></i> Ẩn khung này ngay
+              </button>
             </div>
           </div>
           <div style="font-size: 0.7rem; color: #a7f3d0; margin-top: 8px; line-height: 1.4;">
-            <i class="fa-solid fa-circle-info"></i> <em>Lưu ý:</em> GitHub Pages thường mất 1–2 phút để triển khai bản dựng đầu tiên. Nếu truy cập ban đầu báo 404, bạn hãy chờ khoảng 1 phút rồi tải lại nhé!
+            <i class="fa-solid fa-circle-info"></i> <em>Lưu ý:</em> GitHub Pages thường mất 1–2 phút để triển khai bản dựng đầu tiên. Nếu truy cập ban đầu báo 404, bạn hãy chờ khoảng 1 phút rồi tải lại nhé! Khung này sẽ tự động thu gọn.
           </div>
         `);
 
@@ -2701,6 +2775,32 @@
             }
           });
         }
+
+        // Xử lý nút Ẩn khung Deploy ngay
+        const hideDeployCardBtn = document.getElementById('hideDeployCardBtn');
+        const deployCard = document.querySelector('.deploy-card');
+        if (hideDeployCardBtn && deployCard) {
+          hideDeployCardBtn.addEventListener('click', () => {
+            deployCard.style.transition = 'all 0.6s ease';
+            deployCard.style.opacity = '0';
+            deployCard.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+              deployCard.style.display = 'none';
+            }, 600);
+          });
+        }
+
+        // Tự động làm mờ và ẩn khung deploy trên trang sau 6 giây
+        setTimeout(() => {
+          if (deployCard && deployCard.style.display !== 'none') {
+            deployCard.style.transition = 'all 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
+            deployCard.style.opacity = '0';
+            deployCard.style.transform = 'translateY(30px)';
+            setTimeout(() => {
+              deployCard.style.display = 'none';
+            }, 800);
+          }
+        }, 6000);
 
       } catch (error) {
         // Đánh dấu bước bị lỗi nếu có
